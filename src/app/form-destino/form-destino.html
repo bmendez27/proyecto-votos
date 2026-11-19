@@ -1,0 +1,27 @@
+<div class="card mb-4">
+  <div class="card-header">Agregar destino</div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre" />
+        <div class="text-danger small" *ngIf="nombre?.hasError('required') && nombre?.touched">
+          El nombre es obligatorio.
+        </div>
+        <div class="text-danger small" *ngIf="nombre?.hasError('longitudMinima') && nombre?.touched">
+          El nombre debe tener al menos {{ nombre?.getError('longitudMinima').requerida }} caracteres.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">País</label>
+        <input type="text" class="form-control" formControlName="pais" />
+        <div class="text-danger small" *ngIf="pais?.hasError('required') && pais?.touched">
+          El país es obligatorio.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+  </div>
+</div>

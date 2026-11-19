@@ -1,0 +1,21 @@
+<app-form-destino (destinoAgregado)="onDestinoAgregado($event)"></app-form-destino>
+
+<h2 class="h4">Destinos</h2>
+<ul class="list-group">
+  <li
+    *ngFor="let d of destinos$ | async"
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <div>
+      <strong>{{ d.nombre }}</strong>
+      <small class="text-muted"> — {{ d.pais }}</small>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-sm btn-outline-success" (click)="votarFavor(d.id)">+1</button>
+      <span class="badge bg-secondary">{{ d.votos }}</span>
+      <button class="btn btn-sm btn-outline-warning" (click)="votarContra(d.id)">-1</button>
+      <button class="btn btn-sm btn-outline-danger" (click)="borrar(d.id)">Borrar</button>
+    </div>
+  </li>
+</ul>
